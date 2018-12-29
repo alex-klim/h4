@@ -1,20 +1,6 @@
-/*
- * =====================================================================================
- *
- *       Filename:  mystr.hpp
- *
- *    Description:  my implementation of string
- *
- *        Version:  1.0
- *        Created:  12/11/2018 07:41:22 AM
- *       Revision:  none
- *       Compiler:  gcc
- *
- *         Author:  Alex Klim
- *   Organization:  home
- *
- * =====================================================================================
- */
+#ifndef MYSTR_HPP
+#define MYSTR_HPP
+
 #include <iostream>
 
 class Mystr {
@@ -36,6 +22,7 @@ public:
 
     Mystr& append(const Mystr&);
     bool compare(const Mystr&) const;
+    bool isEmpty() const;
     size_t length() const;
     void resize(size_t);
     void clear();
@@ -48,3 +35,5 @@ private:
     char* thestring;
     size_t len;
 };
+
+#endif // MYSTR_HPP

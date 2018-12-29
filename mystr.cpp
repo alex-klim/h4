@@ -1,20 +1,3 @@
-/*
- * =====================================================================================
- *
- *       Filename:  mystr.cpp
- *
- *    Description:  my implementation of string
- *
- *        Version:  1.0
- *        Created:  12/11/2018 07:42:25 AM
- *       Revision:  none
- *       Compiler:  gcc
- *
- *         Author:  Alex Klim
- *   Organization:  home
- *
- * =====================================================================================
- */
 #include "mystr.hpp"
 
 #include <cstring>
@@ -81,6 +64,8 @@ bool Mystr::operator!= (const Mystr& rhs) {
 }
 
 std::ostream& operator<< (std::ostream& os, const Mystr& rhs) {
+    if (rhs.isEmpty())
+        return os;
     os << rhs.thestring;
     return os;
 }
@@ -88,7 +73,7 @@ std::ostream& operator<< (std::ostream& os, const Mystr& rhs) {
 std::istream& operator>> (std::istream& is, Mystr& rhs) {
     rhs.len = 10;
     rhs.thestring = new char[rhs.len+1];
-    int i = 0;
+    size_t i = 0;
     while (is.get(rhs.thestring[i])) {
         if (isspace(rhs.thestring[i])) {
             break;
@@ -110,6 +95,12 @@ Mystr& Mystr::append(const Mystr& rhs) {
 
 bool Mystr::compare(const Mystr& rhs) const {
     return (thestring == rhs.thestring);
+}
+
+bool Mystr::isEmpty() const {
+    if (len)
+        return 0;
+    return 1;
 }
 
 size_t Mystr::length() const {
